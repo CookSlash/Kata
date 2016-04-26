@@ -1,4 +1,4 @@
-?# FooBarQix 
+# FooBarQix 
 
 Write a program that displays numbers from 1 to 100. A number per line. Follow the following rules:
 
