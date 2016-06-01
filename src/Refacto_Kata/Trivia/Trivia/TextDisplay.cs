@@ -29,7 +29,7 @@ namespace Trivia
         }
         public void DisplayDontGetOutPenaltyBox(IPlayer player)
         {
-            _outpuTextWriterwriter.WriteLine($"{player.Name} is getting out of the penalty box");
+            _outpuTextWriterwriter.WriteLine($"{player.Name} is not getting out of the penalty box");
         }
        
 

@@ -28,7 +28,7 @@ namespace Trivia_csharp.Init
                 }
                 else
                 {
-                    notAWinner = aGame.wasCorrectlyAnswered();
+                    notAWinner = aGame.WasCorrectlyAnswered();
                 }
 
 

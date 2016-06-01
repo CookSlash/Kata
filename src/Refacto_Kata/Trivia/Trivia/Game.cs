@@ -56,7 +56,7 @@ namespace Trivia_csharp.Init
             return true;
         }
 
-        private int howManyPlayers()
+        private int HowManyPlayers()
         {
             return _players.Count;
         }
@@ -72,15 +72,17 @@ namespace Trivia_csharp.Init
                 _currentPlayer.IsGettingOutOfPenaltyBox = IsGettingOutOfPenaltyBox(roll);
                 if (!_currentPlayer.IsGettingOutOfPenaltyBox)
                 {
+                    _textDisplay.DisplayDontGetOutPenaltyBox(_currentPlayer);
                     return;
                 }
+                _textDisplay.DisplayGetOutPenaltyBox(_currentPlayer);
 
             }
 
             _currentPlayer.GoToNewLocation(roll);
-            _textDisplay.DisplayLocation(_currentPlayer);
+           
             _textDisplay.DisplayCategory(CurrentCategory);
-            _textDisplay.DisplayQuestion(askQuestion());
+            _textDisplay.DisplayQuestion(AskQuestion());
             
 
 
@@ -92,7 +94,7 @@ namespace Trivia_csharp.Init
         }
 
 
-        private string askQuestion()
+        private string AskQuestion()
         {
             return _questions[CurrentCategory].Dequeue();
         }
@@ -101,7 +103,7 @@ namespace Trivia_csharp.Init
         private CategoryEnum CurrentCategory =>  (CategoryEnum)(_currentPlayer.Location % 4);
         
 
-        public bool wasCorrectlyAnswered()
+        public bool WasCorrectlyAnswered()
         {
             if (_currentPlayer.IsInPenaltyBox && !_currentPlayer.IsGettingOutOfPenaltyBox)
             {
@@ -110,6 +112,7 @@ namespace Trivia_csharp.Init
             }
             _textDisplay.DisplayCorrectAnswer();
             _currentPlayer.Purses++;
+            _textDisplay.DisplayPurse(_currentPlayer);
             ChangePlayer();
             return DidPlayerWin();
         }
@@ -123,6 +126,7 @@ namespace Trivia_csharp.Init
         {
             _textDisplay.DisplayBadAnswer();
             _currentPlayer.IsInPenaltyBox = true;
+            _textDisplay.DisplaySentToPenaltyBox(_currentPlayer);
             ChangePlayer();
             return true;
         }
