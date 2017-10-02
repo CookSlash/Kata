@@ -56,11 +56,7 @@ namespace Trivia_csharp.Init
             return true;
         }
 
-        private int HowManyPlayers()
-        {
-            return _players.Count;
-        }
-
+       
         public void Roll(int roll)
         {
             _textDisplay.DisplayCurrentPlayer(_currentPlayer);
