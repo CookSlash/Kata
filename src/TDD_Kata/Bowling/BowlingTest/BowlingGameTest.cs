@@ -58,6 +58,17 @@ namespace BowlingTest
 
         }
 
+
+        [Test]
+        public void BowlingGameShouldScore300OnAnAllStrikeGame()
+        {
+
+            
+            RollWithSameNumberOfKnockedPin(12, 10);
+            Assert.That(aGame.Score, Is.EqualTo(300));
+
+        }
+
         private void RollAStrike()
         {
             aGame.Roll(10);
