@@ -9,3 +9,8 @@ src/Refacto_Kata/Trivia/Trivia/bin/
 src/Refacto_Kata/Trivia/Trivia/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
 src/Refacto_Kata/Trivia/Trivia/obj/
 src/Refacto_Kata/Trivia/packages/
+src/TDD_Kata/Bowling/packages/
+src/TDD_Kata/Bowling/.vs/
+src/TDD_Kata/Bowling/Bowling/obj/
+src/TDD_Kata/Bowling/BowlingTest/bin/
+src/TDD_Kata/Bowling/BowlingTest/obj/
