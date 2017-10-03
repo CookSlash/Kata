@@ -22,7 +22,7 @@ namespace BowlingTest
         {
 
             RollWithSameNumberOfKnockedPin(20, 0);
-            Assert.That(aGame.Score, Is.EqualTo(0));
+            Assert.That(aGame.Score(), Is.EqualTo(0));
 
         }
 
@@ -30,7 +30,7 @@ namespace BowlingTest
         public void BowlingGameShouldScore20When1PinHaveBeenKnockedAtEachRoll()
         {
             RollWithSameNumberOfKnockedPin(20,1);
-            Assert.That(aGame.Score, Is.EqualTo(20));
+            Assert.That(aGame.Score(), Is.EqualTo(20));
 
         }
 
@@ -45,11 +45,12 @@ namespace BowlingTest
         [Test]
         public void BowlingGameShouldAdd5BonusPointOnaSpare()
         {
-           
+
             aGame.Roll(9);
             aGame.Roll(1);
-
-            Assert.That(aGame.Score, Is.EqualTo(15));
+            aGame.Roll(6);
+            RollWithSameNumberOfKnockedPin(17, 0);
+            Assert.That(aGame.Score, Is.EqualTo(22));
 
         }
 

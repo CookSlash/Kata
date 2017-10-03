@@ -8,21 +8,42 @@ namespace Bowling
 {
     public class BowlingGame
     {
-        public int Score { get; set; }
-        private int _lastRoll = 0;
+        
+        private int[] rolls = new int[21];
+        private int _currentRoll = 0;
+        private static int FRAME_COUNT = 10;
 
         public void Roll(int pin)
         {
-            if (_lastRoll + pin == 10)
+            rolls[_currentRoll] = pin;
+            _currentRoll++;
+
+
+        }
+
+        public int Score()
+        {
+            int score = 0;
+            int rollIndex = 0;
+            for (int i = 0; i < FRAME_COUNT; i++)
             {
-                Score += pin + 5;
+                if (isSpare(rollIndex))
+                {
+                    score += rolls[rollIndex] + rolls[rollIndex + 1] + rolls[rollIndex+2];
+                }
+                else
+                {
+                    score += rolls[rollIndex] + rolls[rollIndex + 1];
+                }
+                rollIndex += 2;
             }
-            else
-            {
-                Score += pin;
-            }
-            _lastRoll = pin;
-            
+
+            return score;
+        }
+
+        private Boolean isSpare(int rollIndex)
+        {
+            return rolls[rollIndex] + rolls[rollIndex + 1] == 10;
         }
     }
 }
