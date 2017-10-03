@@ -12,6 +12,7 @@ namespace Bowling
         private int[] rolls = new int[21];
         private int _currentRoll = 0;
         private static int FRAME_COUNT = 10;
+        private static int PIN_COUNT = 10;
 
         public void Roll(int pin)
         {
@@ -29,19 +30,22 @@ namespace Bowling
             {
                 if (isStrike(rollIndex))
                 {
-                    score += 10+ rolls[rollIndex + 1] + rolls[rollIndex + 2];
+
+                    score += ComputeScoreForAStrike( rollIndex);
                     rollIndex++;
-                    continue;
+                
                 }
                 else if (isSpare(rollIndex))
                 {
-                    score += rolls[rollIndex] + rolls[rollIndex + 1] + rolls[rollIndex+2];
+                    score += ComputeScoreForASpare(rollIndex);
+                    rollIndex += 2;
                 }
                 else
                 {
-                    score += rolls[rollIndex] + rolls[rollIndex + 1];
+                    score += ComputeScore(rollIndex);
+                    rollIndex += 2;
                 }
-                rollIndex += 2;
+                
             }
 
             return score;
@@ -49,12 +53,27 @@ namespace Bowling
 
         private Boolean isSpare(int rollIndex)
         {
-            return rolls[rollIndex] + rolls[rollIndex + 1] == 10;
+            return rolls[rollIndex] + rolls[rollIndex + 1] == PIN_COUNT;
         }
 
         private Boolean isStrike(int rollIndex)
         {
-            return rolls[rollIndex]  == 10;
+            return rolls[rollIndex]  == PIN_COUNT;
+        }
+
+        private int ComputeScoreForAStrike(int rollIndex)
+        {
+            return PIN_COUNT + rolls[rollIndex + 1] + rolls[rollIndex + 2]; ;
+        }
+
+        private int ComputeScoreForASpare(int rollIndex)
+        {
+            return PIN_COUNT  + rolls[rollIndex + 2]; ;
+        }
+
+        private int ComputeScore(int rollIndex)
+        {
+            return rolls[rollIndex] + rolls[rollIndex + 1];
         }
     }
 }
