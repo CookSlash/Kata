@@ -34,16 +34,9 @@ namespace BowlingTest
 
         }
 
-        private void RollWithSameNumberOfKnockedPin(int rollNumber, int knockedPin)
-        {
-            for (int i = 0; i < rollNumber; i++)
-            {
-                aGame.Roll(knockedPin);
-            }
-        }
 
         [Test]
-        public void BowlingGameShouldAdd5BonusPointOnaSpare()
+        public void BowlingGameShouldAddBonusPointOnaSpare()
         {
 
             aGame.Roll(9);
@@ -52,6 +45,15 @@ namespace BowlingTest
             RollWithSameNumberOfKnockedPin(17, 0);
             Assert.That(aGame.Score, Is.EqualTo(22));
 
+        }
+
+
+        private void RollWithSameNumberOfKnockedPin(int rollNumber, int knockedPin)
+        {
+            for (int i = 0; i < rollNumber; i++)
+            {
+                aGame.Roll(knockedPin);
+            }
         }
 
     }
