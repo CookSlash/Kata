@@ -47,6 +47,18 @@ namespace BowlingTest
 
         }
 
+        [Test]
+        public void BowlingGameShouldAddBonusPointOnaStrike()
+        {
+
+            aGame.Roll(10);
+            aGame.Roll(8);
+           
+            RollWithSameNumberOfKnockedPin(18, 0);
+            Assert.That(aGame.Score, Is.EqualTo(26));
+
+        }
+
 
         private void RollWithSameNumberOfKnockedPin(int rollNumber, int knockedPin)
         {

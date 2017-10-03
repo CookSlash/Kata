@@ -27,7 +27,13 @@ namespace Bowling
             int rollIndex = 0;
             for (int i = 0; i < FRAME_COUNT; i++)
             {
-                if (isSpare(rollIndex))
+                if (isStrike(rollIndex))
+                {
+                    score += 10+ rolls[rollIndex + 1] + rolls[rollIndex + 2];
+                    rollIndex++;
+                    continue;
+                }
+                else if (isSpare(rollIndex))
                 {
                     score += rolls[rollIndex] + rolls[rollIndex + 1] + rolls[rollIndex+2];
                 }
@@ -44,6 +50,11 @@ namespace Bowling
         private Boolean isSpare(int rollIndex)
         {
             return rolls[rollIndex] + rolls[rollIndex + 1] == 10;
+        }
+
+        private Boolean isStrike(int rollIndex)
+        {
+            return rolls[rollIndex]  == 10;
         }
     }
 }
